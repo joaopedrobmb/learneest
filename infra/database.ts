@@ -8,4 +8,4 @@ const pool = new Pool({
   database: "db123",
 });
 
-module.exports = pool;
+export default pool;
