@@ -1,16 +1,34 @@
-const pgp = require("pg-promise")({});
+import { Client } from "pg";
+import dotenv from "dotenv";
+import path from "node:path";
 
-const cn = `postgres://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT}/${process.env.POSTGRES_DB}`;
-const db = pgp(cn);
+dotenv.config({ path: ".env" });
 
-async function query<T = any>(queryObject: string): Promise<T> {
+async function query(queryObject) {
+  let client;
   try {
-    const data = await db.one(queryObject);
-    return data;
+    client = await getNewClient();
+    const result = await client.query(queryObject);
+    return result;
   } catch (error) {
-    console.error("Database query error:", error);
+    console.error(error);
     throw error;
+  } finally {
+    await client.end();
   }
 }
 
-export default { query: query };
+async function getNewClient() {
+  const client = new Client({
+    host: process.env.POSTGRES_HOST,
+    port: Number(process.env.POSTGRES_PORT),
+    user: process.env.POSTGRES_USER,
+    database: process.env.POSTGRES_DB,
+    password: process.env.POSTGRES_PASSWORD,
+  });
+
+  await client.connect();
+  return client;
+}
+
+export default { query, getNewClient };
