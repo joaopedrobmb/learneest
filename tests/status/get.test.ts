@@ -1,5 +1,3 @@
-import { experimental_taintObjectReference } from "react";
-
 test("test", async () => {
   const response = await fetch("http://localhost:3000/api/v1/status");
 
