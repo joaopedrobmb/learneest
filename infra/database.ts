@@ -1,9 +1,4 @@
 import { Client } from "pg";
-import dotenv from "dotenv";
-
-if (process.env.NODE_ENV !== "production") {
-  dotenv.config({ path: ".env.development" });
-}
 
 async function query(queryObject) {
   let client;
@@ -19,16 +14,16 @@ async function query(queryObject) {
   }
 }
 
-console.log("Credentials:", {
-  host: process.env.POSTGRES_HOST,
-  port: Number(process.env.POSTGRES_PORT),
-  user: process.env.POSTGRES_USER,
-  database: process.env.POSTGRES_DB,
-  password: process.env.POSTGRES_PASSWORD,
-});
-
 async function getNewClient() {
   const client = new Client({
+    host: process.env.POSTGRES_HOST,
+    port: Number(process.env.POSTGRES_PORT),
+    user: process.env.POSTGRES_USER,
+    database: process.env.POSTGRES_DB,
+    password: process.env.POSTGRES_PASSWORD,
+  });
+
+  console.log("Credentials:", {
     host: process.env.POSTGRES_HOST,
     port: Number(process.env.POSTGRES_PORT),
     user: process.env.POSTGRES_USER,
