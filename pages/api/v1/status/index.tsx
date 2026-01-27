@@ -4,12 +4,14 @@ async function status(req, res) {
   const updatedAt = new Date();
 
   const databaseVersionResult = await database.query("SHOW server_version;");
-  const databaseVersionValue = databaseVersionResult[0].server_version;
+  const databaseVersionValue = databaseVersionResult.rows[0].server_version;
 
   const databaseMaxConnectionsResult = await database.query(
     "SHOW max_connections;",
   );
-  const maxConnectionsValue = databaseMaxConnectionsResult[0].max_connections;
+
+  const maxConnectionsValue =
+    databaseMaxConnectionsResult.rows[0].max_connections;
 
   const databaseName = process.env.POSTGRES_DB;
   const databaseOpenedConnectionsResult = await database.query({
@@ -18,7 +20,7 @@ async function status(req, res) {
   });
 
   const databaseOpenedConnectionsValue =
-    databaseOpenedConnectionsResult[0].count;
+    databaseOpenedConnectionsResult.rows[0].count;
 
   res.status(200).json({
     updated_at: updatedAt,
