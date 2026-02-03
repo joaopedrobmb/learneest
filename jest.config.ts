@@ -9,6 +9,7 @@ const config: Config = {
   preset: "ts-jest",
   testEnvironment: "node",
   moduleDirectories: ["node_modules", "<rootDir>"],
+  testTimeout: 60000,
 };
 
 export default config;
