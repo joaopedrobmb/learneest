@@ -15,7 +15,8 @@
     "migrations:up": "node-pg-migrate --migrations-dir infra/migrations --envPath .env.development up ",
     "wait-for-postgres": "node infra/scripts/wait-for-postgres.ts",
     "test": "npm run services:up && concurrently -n next,jest --hide next -k --success command-jest \"next dev\" \"jest --runInBand --verbose\"",
-    "test:watch": "jest --watchAll --runInBand"
+    "test:watch": "jest --watchAll --runInBand",
+    "prepare": "husky"
   },
   "author": "",
   "license": "MIT",
@@ -31,6 +32,7 @@
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.6",
     "globals": "^17.3.0",
+    "husky": "^9.1.7",
     "node-pg-migrate": "^8.0.4",
     "prettier": "^3.8.1",
     "ts-node": "^10.9.2",
