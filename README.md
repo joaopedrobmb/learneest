@@ -1,3 +1,7 @@
+_This is my first open-source project_
+_Project developed from an original idea, focused on both real-world impact and learning software development._
+_All code was written by me, understanding and implementing piece by piece and without the use of AI._
+
 # 📚 Learneest
 
 Learneest is a study platform focused on **planning, tracking, and real learning progress**. Its main goal is to help students organize their study time, compare planned vs. actual study sessions, and, in the future, learn together through social features.
@@ -52,13 +56,10 @@ Help students to:
 - React
 - Next.js
 - TypeScript
-- Tailwind CSS / shadcn-ui
 
 ### Backend
 
 - Node.js
-- (Express / Fastify / NestJS – to be defined)
-- Prisma ORM
 
 ### Database
 
@@ -71,39 +72,7 @@ Help students to:
 ### Deployment
 
 - Vercel (Frontend)
-- Railway / Render / Neon (Backend and Database)
-
----
-
-## 🧩 Initial Data Structure (Simplified)
-
-- **User**
-  - id
-  - name
-  - email
-
-- **Subject**
-  - id
-  - name
-  - userId
-
-- **StudySession**
-  - id
-  - subjectId
-  - plannedTime
-  - realTime
-  - date
-
-- **Flashcard**
-  - id
-  - subjectId
-  - question
-  - answer
-
-- **Summary**
-  - id
-  - subjectId
-  - content
+- Neon (Backend and Database)
 
 ---
 
@@ -112,7 +81,3 @@ Help students to:
 🚧 In development
 
 This project is being built incrementally, with a focus on best practices, clean code, and continuous improvement.
-
----
-
-## 🤝 Contributing
