@@ -52,13 +52,10 @@ Help students to:
 - React
 - Next.js
 - TypeScript
-- Tailwind CSS / shadcn-ui
 
 ### Backend
 
 - Node.js
-- (Express / Fastify / NestJS – to be defined)
-- Prisma ORM
 
 ### Database
 
@@ -71,39 +68,7 @@ Help students to:
 ### Deployment
 
 - Vercel (Frontend)
-- Railway / Render / Neon (Backend and Database)
-
----
-
-## 🧩 Initial Data Structure (Simplified)
-
-- **User**
-  - id
-  - name
-  - email
-
-- **Subject**
-  - id
-  - name
-  - userId
-
-- **StudySession**
-  - id
-  - subjectId
-  - plannedTime
-  - realTime
-  - date
-
-- **Flashcard**
-  - id
-  - subjectId
-  - question
-  - answer
-
-- **Summary**
-  - id
-  - subjectId
-  - content
+- Neon (Backend and Database)
 
 ---
 
