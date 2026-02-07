@@ -80,4 +80,5 @@ This project is being built incrementally, with a focus on best practices, clean
 
 ---
 
-## 🤝 Contributing
+*Project developed from an original idea, focused on both real-world impact and learning software development.*
+*All code was written by me and without the use of AI.*
