@@ -1,4 +1,4 @@
-import { Logo } from "./brand/Logo";
+import { Logo } from "../../../shared/brand/Logo";
 
 type NavbarProps = {
   onJoinWaitlist: () => void;
@@ -9,7 +9,7 @@ const links = [
   { href: "#how-it-works", label: "How it works" },
   { href: "#progress", label: "Progress" },
   { href: "#future", label: "Future" },
-  { href: "#faq", label: "FAQ" }
+  { href: "#faq", label: "FAQ" },
 ];
 
 export default function Navbar({ onJoinWaitlist }: NavbarProps) {
@@ -17,9 +17,15 @@ export default function Navbar({ onJoinWaitlist }: NavbarProps) {
     <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/85 backdrop-blur">
       <div className="section-shell py-3">
         <div className="flex items-center justify-between gap-4">
-          <a href="#top" className="focus-ring inline-flex items-center gap-2 rounded-full" aria-label="Learneest home">
+          <a
+            href="#top"
+            className="focus-ring inline-flex items-center gap-2 rounded-full"
+            aria-label="Learneest home"
+          >
             <Logo className="h-8 w-8" />
-            <span className="text-lg font-semibold tracking-tight text-ink">Learneest</span>
+            <span className="text-lg font-semibold tracking-tight text-ink">
+              Learneest
+            </span>
           </a>
 
           <button
@@ -31,7 +37,10 @@ export default function Navbar({ onJoinWaitlist }: NavbarProps) {
           </button>
         </div>
 
-        <nav aria-label="Primary" className="mt-3 flex gap-5 overflow-x-auto pb-1">
+        <nav
+          aria-label="Primary"
+          className="mt-3 flex gap-5 overflow-x-auto pb-1"
+        >
           {links.map((link) => (
             <a
               key={link.href}

@@ -7,7 +7,7 @@ const benefits = [
   "Data-driven insights into your learning patterns",
   "Accountability through progress tracking",
   "Flexible scheduling that adapts to your life",
-  "Future: Learn together with a focused community"
+  "Future: Learn together with a focused community",
 ];
 
 type AboutProps = {
@@ -29,7 +29,9 @@ export function About({ onCtaClick }: AboutProps) {
                 <div className="mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl font-bold text-transparent">
                   3.2x
                 </div>
-                <div className="text-sm text-gray-600">more productive when tracking planned vs actual study time</div>
+                <div className="text-sm text-gray-600">
+                  more productive when tracking planned vs actual study time
+                </div>
               </div>
             </div>
           </div>
@@ -38,13 +40,16 @@ export function About({ onCtaClick }: AboutProps) {
             <div className="space-y-4">
               <h2 className="text-4xl font-bold text-gray-900">
                 Turn study plans into{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">real progress</span>
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  real progress
+                </span>
               </h2>
               <p className="text-lg text-gray-600">
-                Most students struggle with the gap between what they plan to study and what they actually do.
-                Learneest makes this gap visible, helping you build better habits and stay accountable to your goals.
-                Start as a personal productivity tool, and eventually connect with others who share your learning
-                journey.
+                Most students struggle with the gap between what they plan to
+                study and what they actually do. Learneest makes this gap
+                visible, helping you build better habits and stay accountable to
+                your goals. Start as a personal productivity tool, and
+                eventually connect with others who share your learning journey.
               </p>
             </div>
 

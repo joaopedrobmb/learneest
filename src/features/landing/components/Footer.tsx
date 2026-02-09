@@ -1,4 +1,4 @@
-import { Logo } from "../brand/Logo";
+import { Logo } from "../../../shared/brand/Logo";
 import { GithubIcon, LinkedinIcon, MailIcon, TwitterIcon } from "./icons";
 
 export function Footer() {

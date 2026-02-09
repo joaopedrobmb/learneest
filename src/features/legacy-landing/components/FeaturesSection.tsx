@@ -7,7 +7,7 @@ const features = [
   "Study session planning",
   "Integrated Pomodoro timer",
   "Automatic tracking of real study time",
-  "Planned vs actual comparison"
+  "Planned vs actual comparison",
 ];
 
 export default function FeaturesSection() {
@@ -32,7 +32,8 @@ export default function FeaturesSection() {
               </div>
               <p className="mt-4 text-base font-semibold text-ink">{feature}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted">
-                Keep planned vs actual visible in one place and tighten your study consistency over time.
+                Keep planned vs actual visible in one place and tighten your
+                study consistency over time.
               </p>
             </li>
           ))}

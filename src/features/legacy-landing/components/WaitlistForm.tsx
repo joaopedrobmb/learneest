@@ -25,8 +25,16 @@ export default function WaitlistForm({ compact = false }: WaitlistFormProps) {
   };
 
   return (
-    <form onSubmit={onSubmit} className={compact ? "space-y-3" : "space-y-4"} noValidate aria-label="Waitlist form">
-      <label htmlFor="waitlist-email" className="block text-sm font-medium text-ink">
+    <form
+      onSubmit={onSubmit}
+      className={compact ? "space-y-3" : "space-y-4"}
+      noValidate
+      aria-label="Waitlist form"
+    >
+      <label
+        htmlFor="waitlist-email"
+        className="block text-sm font-medium text-ink"
+      >
         Email
       </label>
       <div className="flex flex-col gap-3 sm:flex-row">
@@ -55,7 +63,9 @@ export default function WaitlistForm({ compact = false }: WaitlistFormProps) {
       ) : null}
 
       {submitted ? (
-        <p className="text-sm text-emerald-700">Thanks. You are on the list. We will contact you soon.</p>
+        <p className="text-sm text-emerald-700">
+          Thanks. You are on the list. We will contact you soon.
+        </p>
       ) : null}
     </form>
   );

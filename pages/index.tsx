@@ -1,16 +1,18 @@
 import Head from "next/head";
-import { About } from "../components/figma-landing/About";
-import { Contact } from "../components/figma-landing/Contact";
-import { FeatureHighlight } from "../components/figma-landing/FeatureHighlight";
-import { Features } from "../components/figma-landing/Features";
-import { Footer } from "../components/figma-landing/Footer";
-import { Header } from "../components/figma-landing/Header";
-import { Hero } from "../components/figma-landing/Hero";
-import { HowItWorks } from "../components/figma-landing/HowItWorks";
+import { About } from "../src/features/landing/components/About";
+import { Contact } from "../src/features/landing/components/Contact";
+import { FeatureHighlight } from "../src/features/landing/components/FeatureHighlight";
+import { Features } from "../src/features/landing/components/Features";
+import { Footer } from "../src/features/landing/components/Footer";
+import { Header } from "../src/features/landing/components/Header";
+import { Hero } from "../src/features/landing/components/Hero";
+import { HowItWorks } from "../src/features/landing/components/HowItWorks";
 
 export default function Home() {
   const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById("contact")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (

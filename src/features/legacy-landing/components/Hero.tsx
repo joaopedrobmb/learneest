@@ -8,7 +8,7 @@ const cards = [
   { label: "Planned Time", value: "16h", detail: "This week" },
   { label: "Actual Time", value: "14h 20m", detail: "Tracked focus time" },
   { label: "Pomodoro", value: "11 cycles", detail: "Avg 28m deep focus" },
-  { label: "Consistency", value: "6 days", detail: "Current streak" }
+  { label: "Consistency", value: "6 days", detail: "Current streak" },
 ];
 
 export default function Hero({ onPrimaryCta }: HeroProps) {
@@ -23,8 +23,9 @@ export default function Hero({ onPrimaryCta }: HeroProps) {
             Study with structure and see your real progress.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-            Learneest helps you compare planned vs actual study sessions, measure real study time, and build consistency
-            with a workflow students can actually sustain.
+            Learneest helps you compare planned vs actual study sessions,
+            measure real study time, and build consistency with a workflow
+            students can actually sustain.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <button
@@ -51,9 +52,16 @@ export default function Hero({ onPrimaryCta }: HeroProps) {
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {cards.map((card) => (
-              <div key={card.label} className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
-                <p className="text-xs font-medium uppercase tracking-wide text-muted">{card.label}</p>
-                <p className="mt-2 text-2xl font-semibold text-ink">{card.value}</p>
+              <div
+                key={card.label}
+                className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4"
+              >
+                <p className="text-xs font-medium uppercase tracking-wide text-muted">
+                  {card.label}
+                </p>
+                <p className="mt-2 text-2xl font-semibold text-ink">
+                  {card.value}
+                </p>
                 <p className="mt-1 text-xs text-muted">{card.detail}</p>
               </div>
             ))}
