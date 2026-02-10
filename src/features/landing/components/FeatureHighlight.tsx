@@ -15,12 +15,13 @@ export function FeatureHighlight() {
   useEffect(() => {
     let interval: ReturnType<typeof setInterval> | undefined;
     if (isRunning && time > 0) {
-      interval = setInterval(() => setTime((value) => value - 1), 1000);
+      interval = setInterval(() => {
+        setTime((value) => value - 1);
+      }, 1000);
     }
+
     return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
+      if (interval) clearInterval(interval);
     };
   }, [isRunning, time]);
 
@@ -102,7 +103,7 @@ export function FeatureHighlight() {
                           cx="96"
                           cy="96"
                           r="92"
-                          stroke="url(#pomodoro-gradient)"
+                          stroke="url(#gradient)"
                           strokeWidth="8"
                           fill="none"
                           strokeDasharray={`${(time / (25 * 60)) * 580} 580`}
@@ -110,7 +111,7 @@ export function FeatureHighlight() {
                         />
                         <defs>
                           <linearGradient
-                            id="pomodoro-gradient"
+                            id="gradient"
                             x1="0%"
                             y1="0%"
                             x2="100%"
