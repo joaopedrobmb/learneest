@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { About } from "../src/features/landing/components/About";
-import { Contact } from "../src/features/landing/components/Contact";
 import { FeatureHighlight } from "../src/features/landing/components/FeatureHighlight";
 import { Features } from "../src/features/landing/components/Features";
 import { Footer } from "../src/features/landing/components/Footer";
@@ -9,9 +8,9 @@ import { Hero } from "../src/features/landing/components/Hero";
 import { HowItWorks } from "../src/features/landing/components/HowItWorks";
 
 export default function Home() {
-  const scrollToContact = () => {
+  const scrollToFeatures = () => {
     document
-      .getElementById("contact")
+      .getElementById("features")
       ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -27,14 +26,19 @@ export default function Home() {
       </Head>
 
       <div className="min-h-screen bg-white">
-        <Header onCtaClick={scrollToContact} />
+        <Header onCtaClick={scrollToFeatures} />
         <main>
-          <Hero onPrimaryClick={scrollToContact} />
-          <HowItWorks />
+          <Hero onPrimaryClick={scrollToFeatures} />
+          <section id="how">
+            <HowItWorks />
+          </section>
           <FeatureHighlight />
-          <Features />
-          <About onCtaClick={scrollToContact} />
-          <Contact />
+          <section id="features">
+            <Features />
+          </section>
+          <section id="about">
+            <About />
+          </section>
         </main>
         <Footer />
       </div>
