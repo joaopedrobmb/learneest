@@ -1,4 +1,3 @@
-import { response } from "express";
 import { InternalServerError, MethodNotAllowedError } from "./errors";
 
 function onNoMatchHandler(req, res) {
