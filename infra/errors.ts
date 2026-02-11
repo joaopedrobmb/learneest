@@ -1,4 +1,6 @@
 export class InternalServerError extends Error {
+  statusCode: any;
+  action: any;
   constructor({ cause }) {
     super("An unexpected internal error occurred.", {
       cause,
