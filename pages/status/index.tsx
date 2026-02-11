@@ -11,6 +11,7 @@ async function fetchAPI(key) {
 export default function StatusPage() {
   return (
     <>
+      <h1>Status</h1>
       <UpdatedAt />
       <DatabaseStatus />
     </>
@@ -29,8 +30,7 @@ function UpdatedAt() {
 
     return (
       <div>
-        <h1>Status</h1>
-        <p>Updated At: {updatedAtText}</p>
+        <div>Updated At: {updatedAtText}</div>
       </div>
     );
   }
@@ -57,8 +57,8 @@ function DatabaseStatus() {
 
   return (
     <div>
-      <h1>Database Information</h1>
-      <p>{databaseStatusInformation}</p>
+      <h2>Database Information</h2>
+      <div>{databaseStatusInformation}</div>
     </div>
   );
 }
