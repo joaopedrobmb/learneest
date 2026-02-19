@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm run services:up && npm run services:wait:database && npm run migrations:up && next dev",
-    "test": "npm run services:up && concurrently -n next,jest --hide next -k --success command-jest \"next dev\" \"jest --runInBand --verbose\"",
-    "test:watch": "jest --watchAll --runInBand --verbose",
+    "test": "npm run services:up && NODE_OPTIONS=--experimental-vm-modules concurrently -n next,jest --hide next -k --success command-jest \"next dev\" \"jest --runInBand --verbose\"",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watchAll --runInBand --verbose",
     "posttest": "npm run services:stop",
     "services:up": "docker compose -f infra/compose.yaml up -d",
     "services:stop": "docker compose -f infra/compose.yaml stop",
@@ -57,7 +57,8 @@
     "next-connect": "^1.0.0",
     "pg": "8.17.2",
     "pg-promise": "12.3.0",
-    "ts-jest": "29.4.6"
+    "ts-jest": "29.4.6",
+    "uuid": "^13.0.0"
   },
   "config": {
     "commitizen": {
