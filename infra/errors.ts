@@ -47,13 +47,11 @@ export class ServiceError extends Error {
 export class ValidationError extends Error {
   statusCode: any;
   action: any;
-  constructor(
-    {
-      cause,
-      message,
-      action,
-    }: { cause?: any; message?: any; action?: any } = {},
-  ) {
+  constructor({
+    cause,
+    message,
+    action,
+  }: { cause?: any; message?: any; action?: any } = {}) {
     super(message || "A validation error occurred.", {
       cause,
     });
@@ -76,13 +74,11 @@ export class ValidationError extends Error {
 export class NotFoundError extends Error {
   statusCode: any;
   action: any;
-  constructor(
-    {
-      cause,
-      message,
-      action,
-    }: { cause?: any; message?: any; action?: any } = {},
-  ) {
+  constructor({
+    cause,
+    message,
+    action,
+  }: { cause?: any; message?: any; action?: any } = {}) {
     super(message || "It was not possible to find this resource on system.", {
       cause,
     });
