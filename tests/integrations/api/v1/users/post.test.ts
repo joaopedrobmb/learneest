@@ -126,7 +126,7 @@ describe("POST /api/v1/users", () => {
       expect(response2Body).toEqual({
         name: "ValidationError",
         message: "Username already exist.",
-        action: "Try to insert another email.",
+        action: "Try to insert another username.",
         status_code: 400,
       });
     });
