@@ -1,16 +1,9 @@
-type SectionTitleProps = {
-  eyebrow?: string;
-  title: string;
-  description: string;
-  center?: boolean;
-};
-
 export default function SectionTitle({
   eyebrow,
   title,
   description,
   center = false,
-}: SectionTitleProps) {
+}) {
   return (
     <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       {eyebrow ? (

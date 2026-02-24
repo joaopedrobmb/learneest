@@ -1,5 +1,5 @@
 import { runner } from "node-pg-migrate";
-import database from "infra/database";
+import database from "infra/database.js";
 import { join } from "node:path";
 
 const defaultMigrationsOptions = {
@@ -8,7 +8,7 @@ const defaultMigrationsOptions = {
   direction: "up",
   log: () => {},
   migrationsTable: "pgmigrations",
-} as const;
+};
 
 async function listPendingMigrations() {
   let dbClient;

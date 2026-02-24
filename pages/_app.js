@@ -1,8 +1,7 @@
 import Head from "next/head";
-import type { AppProps } from "next/app";
 import "../src/styles/globals.css";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>

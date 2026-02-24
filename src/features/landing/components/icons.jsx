@@ -1,8 +1,4 @@
-import { SVGProps } from "react";
-
-type IconProps = SVGProps<SVGSVGElement>;
-
-function BaseIcon({ children, ...props }: IconProps) {
+function BaseIcon({ children, ...props }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -19,7 +15,7 @@ function BaseIcon({ children, ...props }: IconProps) {
   );
 }
 
-export function BookOpenIcon(props: IconProps) {
+export function BookOpenIcon(props) {
   return (
     <BaseIcon {...props}>
       <path
@@ -30,7 +26,7 @@ export function BookOpenIcon(props: IconProps) {
   );
 }
 
-export function SubjectsHubIcon(props: IconProps) {
+export function SubjectsHubIcon(props) {
   return (
     <BaseIcon {...props}>
       <rect x="3" y="7" width="10" height="12" rx="2" />
@@ -42,7 +38,7 @@ export function SubjectsHubIcon(props: IconProps) {
   );
 }
 
-export function MenuIcon(props: IconProps) {
+export function MenuIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M4 6h16M4 12h16M4 18h16" />
@@ -50,7 +46,7 @@ export function MenuIcon(props: IconProps) {
   );
 }
 
-export function XIcon(props: IconProps) {
+export function XIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="m6 6 12 12M18 6 6 18" />
@@ -58,7 +54,7 @@ export function XIcon(props: IconProps) {
   );
 }
 
-export function ArrowRightIcon(props: IconProps) {
+export function ArrowRightIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M5 12h14" />
@@ -67,7 +63,7 @@ export function ArrowRightIcon(props: IconProps) {
   );
 }
 
-export function SparklesIcon(props: IconProps) {
+export function SparklesIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="m12 3 1.8 3.7L18 8.5l-3.2 2.6.9 4-3.7-2-3.7 2 .9-4L6 8.5l4.2-1.8z" />
@@ -75,7 +71,7 @@ export function SparklesIcon(props: IconProps) {
   );
 }
 
-export function TargetIcon(props: IconProps) {
+export function TargetIcon(props) {
   return (
     <BaseIcon {...props}>
       <circle cx="12" cy="12" r="8" />
@@ -85,7 +81,7 @@ export function TargetIcon(props: IconProps) {
   );
 }
 
-export function ClockIcon(props: IconProps) {
+export function ClockIcon(props) {
   return (
     <BaseIcon {...props}>
       <circle cx="12" cy="12" r="9" />
@@ -94,7 +90,7 @@ export function ClockIcon(props: IconProps) {
   );
 }
 
-export function CheckCircleIcon(props: IconProps) {
+export function CheckCircleIcon(props) {
   return (
     <BaseIcon {...props}>
       <circle cx="12" cy="12" r="9" />
@@ -103,7 +99,7 @@ export function CheckCircleIcon(props: IconProps) {
   );
 }
 
-export function TimerIcon(props: IconProps) {
+export function TimerIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M9 2h6" />
@@ -113,7 +109,7 @@ export function TimerIcon(props: IconProps) {
   );
 }
 
-export function FileTextIcon(props: IconProps) {
+export function FileTextIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
@@ -123,7 +119,7 @@ export function FileTextIcon(props: IconProps) {
   );
 }
 
-export function PlayIcon(props: IconProps) {
+export function PlayIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="m8 6 10 6-10 6z" fill="currentColor" stroke="none" />
@@ -131,7 +127,7 @@ export function PlayIcon(props: IconProps) {
   );
 }
 
-export function PauseIcon(props: IconProps) {
+export function PauseIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M8 6h3v12H8zM13 6h3v12h-3z" fill="currentColor" stroke="none" />
@@ -139,7 +135,7 @@ export function PauseIcon(props: IconProps) {
   );
 }
 
-export function CheckIcon(props: IconProps) {
+export function CheckIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="m5 12 4 4 10-10" />
@@ -147,7 +143,7 @@ export function CheckIcon(props: IconProps) {
   );
 }
 
-export function CalendarIcon(props: IconProps) {
+export function CalendarIcon(props) {
   return (
     <BaseIcon {...props}>
       <rect x="3" y="5" width="18" height="16" rx="2" />
@@ -156,7 +152,7 @@ export function CalendarIcon(props: IconProps) {
   );
 }
 
-export function BarChartIcon(props: IconProps) {
+export function BarChartIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M4 20V10M10 20V6M16 20v-8M22 20H2" />
@@ -164,7 +160,7 @@ export function BarChartIcon(props: IconProps) {
   );
 }
 
-export function TrendingUpIcon(props: IconProps) {
+export function TrendingUpIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="m3 17 6-6 4 4 8-8" />
@@ -173,7 +169,7 @@ export function TrendingUpIcon(props: IconProps) {
   );
 }
 
-export function MessageCircleIcon(props: IconProps) {
+export function MessageCircleIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M21 12a8.5 8.5 0 0 1-8.5 8.5H4l2.3-3.8A8.5 8.5 0 1 1 21 12Z" />
@@ -181,7 +177,7 @@ export function MessageCircleIcon(props: IconProps) {
   );
 }
 
-export function BellIcon(props: IconProps) {
+export function BellIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M15 18H9" />
@@ -190,7 +186,7 @@ export function BellIcon(props: IconProps) {
   );
 }
 
-export function UsersIcon(props: IconProps) {
+export function UsersIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M16 19a4 4 0 0 0-8 0" />
@@ -200,7 +196,7 @@ export function UsersIcon(props: IconProps) {
   );
 }
 
-export function ZapIcon(props: IconProps) {
+export function ZapIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
@@ -208,7 +204,7 @@ export function ZapIcon(props: IconProps) {
   );
 }
 
-export function MailIcon(props: IconProps) {
+export function MailIcon(props) {
   return (
     <BaseIcon {...props}>
       <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -217,7 +213,7 @@ export function MailIcon(props: IconProps) {
   );
 }
 
-export function GithubIcon(props: IconProps) {
+export function GithubIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M9 19c-4 1.2-4-2-6-2" />
@@ -226,7 +222,7 @@ export function GithubIcon(props: IconProps) {
   );
 }
 
-export function TwitterIcon(props: IconProps) {
+export function TwitterIcon(props) {
   return (
     <BaseIcon {...props}>
       <path d="M22 5.8c-.7.3-1.5.5-2.3.6a4 4 0 0 0 1.7-2.2 8.1 8.1 0 0 1-2.6 1 4 4 0 0 0-6.8 3.7A11.3 11.3 0 0 1 3 4.9a4 4 0 0 0 1.2 5.3 4 4 0 0 1-1.8-.5v.1a4 4 0 0 0 3.2 3.9 4 4 0 0 1-1.8.1 4 4 0 0 0 3.7 2.8A8.1 8.1 0 0 1 2 18.3a11.4 11.4 0 0 0 6.2 1.8c7.4 0 11.5-6.1 11.5-11.4v-.5A8 8 0 0 0 22 5.8" />
@@ -234,7 +230,7 @@ export function TwitterIcon(props: IconProps) {
   );
 }
 
-export function LinkedinIcon(props: IconProps) {
+export function LinkedinIcon(props) {
   return (
     <BaseIcon {...props}>
       <rect x="3" y="3" width="18" height="18" rx="2" />

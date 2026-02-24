@@ -1,9 +1,5 @@
 import { Logo } from "../../../shared/brand/Logo";
 
-type NavbarProps = {
-  onJoinWaitlist: () => void;
-};
-
 const links = [
   { href: "#features", label: "Features" },
   { href: "#how-it-works", label: "How it works" },
@@ -12,7 +8,7 @@ const links = [
   { href: "#faq", label: "FAQ" },
 ];
 
-export default function Navbar({ onJoinWaitlist }: NavbarProps) {
+export default function Navbar({ onJoinWaitlist }) {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/85 backdrop-blur">
       <div className="section-shell py-3">

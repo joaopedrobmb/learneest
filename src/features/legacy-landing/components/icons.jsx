@@ -1,8 +1,4 @@
-import { SVGProps } from "react";
-
-type IconProps = SVGProps<SVGSVGElement>;
-
-export function CheckIcon(props: IconProps) {
+export function CheckIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -17,7 +13,7 @@ export function CheckIcon(props: IconProps) {
   );
 }
 
-export function LockIcon(props: IconProps) {
+export function LockIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -33,7 +29,7 @@ export function LockIcon(props: IconProps) {
   );
 }
 
-export function BoltIcon(props: IconProps) {
+export function BoltIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -48,7 +44,7 @@ export function BoltIcon(props: IconProps) {
   );
 }
 
-export function PhoneIcon(props: IconProps) {
+export function PhoneIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -64,7 +60,7 @@ export function PhoneIcon(props: IconProps) {
   );
 }
 
-export function ArrowRightIcon(props: IconProps) {
+export function ArrowRightIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"

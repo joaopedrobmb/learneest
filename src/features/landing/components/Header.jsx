@@ -2,11 +2,7 @@ import { useState } from "react";
 import { Logo } from "../../../shared/brand/Logo";
 import { MenuIcon, XIcon } from "./icons";
 
-type HeaderProps = {
-  onCtaClick?: () => void;
-};
-
-export function Header({ onCtaClick }: HeaderProps) {
+export function Header({ onCtaClick }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleCta = () => {

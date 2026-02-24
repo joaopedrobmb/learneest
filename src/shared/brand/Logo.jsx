@@ -1,10 +1,6 @@
 import { useId } from "react";
 
-type LogoProps = {
-  className?: string;
-};
-
-export function Logo({ className = "w-8 h-8" }: LogoProps) {
+export function Logo({ className = "w-8 h-8" }) {
   const gradientId = useId();
 
   const bodyGradient = `${gradientId}-body`;
@@ -137,11 +133,11 @@ export function Logo({ className = "w-8 h-8" }: LogoProps) {
   );
 }
 
-export function LogoColored({ className = "w-8 h-8" }: LogoProps) {
+export function LogoColored({ className = "w-8 h-8" }) {
   return <Logo className={className} />;
 }
 
-export function LogoSimple({ className = "w-8 h-8" }: LogoProps) {
+export function LogoSimple({ className = "w-8 h-8" }) {
   return (
     <svg
       viewBox="0 0 200 200"

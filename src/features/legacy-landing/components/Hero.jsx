@@ -1,9 +1,5 @@
 import { ArrowRightIcon } from "./icons";
 
-type HeroProps = {
-  onPrimaryCta: () => void;
-};
-
 const cards = [
   { label: "Planned Time", value: "16h", detail: "This week" },
   { label: "Actual Time", value: "14h 20m", detail: "Tracked focus time" },
@@ -11,7 +7,7 @@ const cards = [
   { label: "Consistency", value: "6 days", detail: "Current streak" },
 ];
 
-export default function Hero({ onPrimaryCta }: HeroProps) {
+export default function Hero({ onPrimaryCta }) {
   return (
     <section id="top" className="relative overflow-hidden py-20 sm:py-24">
       <div className="section-shell grid gap-10 lg:grid-cols-2 lg:items-center">

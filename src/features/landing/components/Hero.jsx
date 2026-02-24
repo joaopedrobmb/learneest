@@ -1,10 +1,6 @@
 import { ArrowRightIcon } from "./icons";
 
-type HeroProps = {
-  onPrimaryClick?: () => void;
-};
-
-export function Hero({ onPrimaryClick }: HeroProps) {
+export function Hero({ onPrimaryClick }) {
   const handlePrimary = () => {
     if (onPrimaryClick) {
       onPrimaryClick();
