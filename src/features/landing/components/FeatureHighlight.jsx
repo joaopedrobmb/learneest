@@ -8,12 +8,12 @@ import {
 } from "./icons";
 
 export function FeatureHighlight() {
-  const [activeTab, setActiveTab] = useState<"pomodoro" | "notes">("pomodoro");
+  const [activeTab, setActiveTab] = useState("pomodoro");
   const [time, setTime] = useState(25 * 60);
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
-    let interval: ReturnType<typeof setInterval> | undefined;
+    let interval;
     if (isRunning && time > 0) {
       interval = setInterval(() => {
         setTime((value) => value - 1);

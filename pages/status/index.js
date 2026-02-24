@@ -41,7 +41,7 @@ function DatabaseStatus() {
     refreshInterval: 2000,
   });
 
-  let databaseStatusInformation: React.ReactNode = "Loading...";
+  let databaseStatusInformation = "Loading...";
 
   if (!isLoading && data) {
     databaseStatusInformation = (

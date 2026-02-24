@@ -1,15 +1,11 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
-type WaitlistFormProps = {
-  compact?: boolean;
-};
-
-export default function WaitlistForm({ compact = false }: WaitlistFormProps) {
+export default function WaitlistForm({ compact = false }) {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (event) => {
     event.preventDefault();
 
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

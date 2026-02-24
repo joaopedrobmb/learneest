@@ -1,7 +1,5 @@
 export class InternalServerError extends Error {
-  statusCode: any;
-  action: any;
-  constructor({ cause, statusCode }: { cause?: any; statusCode?: any } = {}) {
+  constructor({ cause, statusCode } = {}) {
     super("An unexpected internal error occurred.", {
       cause,
     });
@@ -22,9 +20,7 @@ export class InternalServerError extends Error {
 }
 
 export class ServiceError extends Error {
-  statusCode: any;
-  action: any;
-  constructor({ cause, message }: { cause?: any; message?: any } = {}) {
+  constructor({ cause, message }) {
     super(message || "Service is unavailable at this moment.", {
       cause,
     });
@@ -45,13 +41,7 @@ export class ServiceError extends Error {
 }
 
 export class ValidationError extends Error {
-  statusCode: any;
-  action: any;
-  constructor({
-    cause,
-    message,
-    action,
-  }: { cause?: any; message?: any; action?: any } = {}) {
+  constructor({ cause, message, action }) {
     super(message || "A validation error occurred.", {
       cause,
     });
@@ -72,13 +62,7 @@ export class ValidationError extends Error {
 }
 
 export class NotFoundError extends Error {
-  statusCode: any;
-  action: any;
-  constructor({
-    cause,
-    message,
-    action,
-  }: { cause?: any; message?: any; action?: any } = {}) {
+  constructor({ cause, message, action }) {
     super(message || "It was not possible to find this resource on system.", {
       cause,
     });
@@ -99,8 +83,6 @@ export class NotFoundError extends Error {
 }
 
 export class MethodNotAllowedError extends Error {
-  statusCode: any;
-  action: any;
   constructor() {
     super("Method not allowed for this endpoint.");
 
