@@ -43,6 +43,7 @@
     "bcrypt": "6.0.0",
     "bcryptjs": "3.0.3",
     "concurrently": "9.2.1",
+    "cookie": "1.0.2",
     "dotenv": "16.4.4",
     "dotenv-expand": "12.0.3",
     "jest": "30.2.0",
@@ -50,6 +51,7 @@
     "next-connect": "^1.0.0",
     "pg": "8.17.2",
     "pg-promise": "12.3.0",
+    "set-cookie-parser": "2.7.1",
     "uuid": "^11.1.0"
   },
   "config": {
