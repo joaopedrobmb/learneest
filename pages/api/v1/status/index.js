@@ -1,6 +1,5 @@
 import { createRouter } from "next-connect";
 import database from "infra/database";
-import { InternalServerError } from "infra/errors";
 import controller from "infra/controller";
 
 const router = createRouter();
@@ -9,7 +8,7 @@ router.get(getHandler);
 
 export default router.handler(controller.errorHandlers);
 
-async function getHandler(req, res) {
+async function getHandler(request, response) {
   const updatedAt = new Date();
 
   const databaseVersionResult = await database.query("SHOW server_version;");
@@ -31,7 +30,7 @@ async function getHandler(req, res) {
   const databaseOpenedConnectionsValue =
     databaseOpenedConnectionsResult.rows[0].count;
 
-  res.status(200).json({
+  response.status(200).json({
     updated_at: updatedAt,
     dependencies: {
       database: {
