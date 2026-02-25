@@ -4,12 +4,12 @@ import {
   ValidationError,
   NotFoundError,
   UnauthorizedError,
-} from "./errors";
+} from "./errors.js";
 
 function onNoMatchHandler(request, response) {
   const publicErrorObject = new MethodNotAllowedError();
 
-  res.status(publicErrorObject.statusCode).json(publicErrorObject);
+  response.status(publicErrorObject.statusCode).json(publicErrorObject);
 }
 
 function onErrorHandler(error, request, response) {
