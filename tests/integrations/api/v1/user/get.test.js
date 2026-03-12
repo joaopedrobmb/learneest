@@ -86,6 +86,17 @@ describe("GET /api/v1/user", () => {
         action: "Check if this user is logged in.",
         status_code: 401,
       });
+
+      // Set-Cookies Assertions
+      const parsedSetCookie = setCookieParser(response, { map: true });
+
+      expect(parsedSetCookie.session_id).toEqual({
+        name: "session_id",
+        value: "invalid",
+        maxAge: -1,
+        path: "/",
+        httpOnly: true,
+      });
     });
     test("With expired session", async () => {
       jest.useFakeTimers({
