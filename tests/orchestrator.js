@@ -3,6 +3,7 @@ import retry from "async-retry";
 import database from "infra/database.js";
 import migrator from "models/migrator.js";
 import session from "models/session";
+import studySession from "models/study-session";
 import user from "models/user.js";
 
 const emailHttpUrl = `http://${process.env.EMAIL_HTTP_HOST}:${process.env.EMAIL_HTTP_PORT}`;
@@ -53,6 +54,22 @@ async function createSession(userId) {
   return await session.create(userId);
 }
 
+async function createStudySession(studySessionObject) {
+  const TWO_HOURS_IN_MILLISECONDS = 2 * 60 * 60 * 1000;
+
+  const sessionScheduledStart = new Date();
+  const sessionScheduledEnd = new Date(
+    sessionScheduledStart.getTime() + TWO_HOURS_IN_MILLISECONDS,
+  );
+
+  return await studySession.create({
+    subject: studySessionObject.subject,
+    scheduled_start:
+      studySessionObject.scheduled_start || sessionScheduledStart,
+    scheduled_end: studySessionObject.scheduled_end || sessionScheduledEnd,
+  });
+}
+
 async function deleteAllEmail() {
   await fetch(`${emailHttpUrl}/messages`, { method: "DELETE" });
 }
@@ -78,6 +95,7 @@ const orchestrator = {
   runPendingMigrations,
   createUser,
   createSession,
+  createStudySession,
   deleteAllEmail,
   getLastEmail,
 };

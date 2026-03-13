@@ -8,35 +8,37 @@ beforeAll(async () => {
 });
 
 const TWO_HOURS_IN_MILLISECONDS = 2 * 60 * 60 * 1000;
-const FOUR_HOURS_IN_MILLISECONDS = 4 * 60 * 60 * 1000;
+const TWO_DAYS_IN_MILLISECONDS = 2 * 24 * 60 * 60 * 1000;
 const now = new Date();
-const twoHoursFromNow = new Date(now.getTime() + TWO_HOURS_IN_MILLISECONDS);
+const twoHoursPastFromNow = new Date(now - TWO_HOURS_IN_MILLISECONDS);
 
-describe("POST /api/v1/study-sessions", () => {
+describe("PATCH /api/v1/study-sessions", () => {
   describe("Anonymous user", () => {
     test("With valid data", async () => {
+      const createdStudySession = await orchestrator.createStudySession({
+        subject: "withValidData",
+      });
+
       const response = await fetch(
-        "http://localhost:3000/api/v1/study-sessions",
+        `http://localhost:3000/api/v1/study-sessions/${createdStudySession.id}`,
         {
-          method: "POST",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            subject: "validSubject",
-            scheduled_start: now,
-            scheduled_end: twoHoursFromNow,
+            subject: "withValidData2",
           }),
         },
       );
 
-      expect(response.status).toBe(201);
+      expect(response.status).toBe(200);
 
       const responseBody = await response.json();
 
       expect(responseBody).toEqual({
         id: responseBody.id,
-        subject: "validSubject",
+        subject: "withValidData2",
         scheduled_start: responseBody.scheduled_start,
         scheduled_end: responseBody.scheduled_end,
         created_at: responseBody.created_at,
@@ -44,27 +46,27 @@ describe("POST /api/v1/study-sessions", () => {
       });
 
       expect(uuidVersion(responseBody.id)).toBe(4);
+      expect(Date.parse(responseBody.scheduled_start)).not.toBeNaN();
+      expect(Date.parse(responseBody.scheduled_end)).not.toBeNaN();
       expect(Date.parse(responseBody.created_at)).not.toBeNaN();
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
+
+      expect(responseBody.updated_at > responseBody.created_at).toBe(true);
     });
-    test("With `scheduled_start` in the past", async () => {
-      const sessionScheduledStartInPast = new Date(
-        now.getTime() - FOUR_HOURS_IN_MILLISECONDS,
-      );
-      const sessionScheduledEndInPast = new Date(
-        sessionScheduledStartInPast.getTime() - TWO_HOURS_IN_MILLISECONDS,
-      );
+    test("With scheduled_start in the past", async () => {
+      const createdStudySession = await orchestrator.createStudySession({
+        subject: "scheduledStartInPast",
+      });
 
       const response = await fetch(
-        "http://localhost:3000/api/v1/study-sessions",
+        `http://localhost:3000/api/v1/study-sessions/${createdStudySession.id}`,
         {
-          method: "POST",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            subject: "ScheduledTimeInPast",
-            scheduled_start: sessionScheduledStartInPast,
+            scheduled_start: twoHoursPastFromNow,
           }),
         },
       );
@@ -81,17 +83,24 @@ describe("POST /api/v1/study-sessions", () => {
       });
     });
     test("With scheduled_end before scheduled_start", async () => {
-      const scheduledEndBeforeStart = new Date(now - TWO_HOURS_IN_MILLISECONDS);
+      const createdStudySession = await orchestrator.createStudySession({
+        subject: "scheduledEndBeforeStart",
+        scheduled_start: new Date(now + TWO_DAYS_IN_MILLISECONDS),
+      });
+
+      const createdScheduleStart = createdStudySession.scheduled_start;
+      const scheduledEndBeforeStart = new Date(
+        createdScheduleStart - TWO_HOURS_IN_MILLISECONDS,
+      );
 
       const response = await fetch(
-        `http://localhost:3000/api/v1/study-sessions/`,
+        `http://localhost:3000/api/v1/study-sessions/${createdStudySession.id}`,
         {
-          method: "POST",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            scheduled_start: now,
             scheduled_end: scheduledEndBeforeStart,
           }),
         },

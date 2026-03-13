@@ -23,7 +23,7 @@ async function findOneById(studySessionId) {
 
     if (results.rowCount === 0) {
       throw new NotFoundError({
-        message: "Id not found.",
+        message: "Study session not found.",
         action: "Check if the id is correct and try again.",
       });
     }
@@ -33,10 +33,7 @@ async function findOneById(studySessionId) {
 }
 
 async function create(userInputValues) {
-  await validateScheduledDates(
-    userInputValues.scheduled_start,
-    userInputValues.scheduled_end,
-  );
+  await validateScheduledDates(userInputValues);
 
   const newStudySession = await runInsertQuery(userInputValues);
   return newStudySession;
@@ -62,18 +59,67 @@ async function create(userInputValues) {
   }
 }
 
-function validateScheduledDates(scheduled_start, scheduled_end) {
+async function update(id, userInputValues) {
+  const currentStudySession = await findOneById(id);
+
+  const studySessionWithNewValues = {
+    ...currentStudySession,
+    ...userInputValues,
+  };
+
+  await validateScheduledDates(studySessionWithNewValues);
+
+  const updatedStudySession = await runUpdateQuery(studySessionWithNewValues);
+
+  return updatedStudySession;
+
+  async function runUpdateQuery(studySessionWithNewValues) {
+    const results = await database.query({
+      text: `
+      UPDATE
+        study_sessions
+      SET
+        subject = $2,
+        scheduled_start = $3,
+        scheduled_end = $4,
+        updated_at = timezone('utc', now())
+      WHERE
+        id = $1
+      RETURNING
+        * 
+      `,
+      values: [
+        studySessionWithNewValues.id,
+        studySessionWithNewValues.subject,
+        studySessionWithNewValues.scheduled_start,
+        studySessionWithNewValues.scheduled_end,
+      ],
+    });
+
+    return results.rows[0];
+  }
+}
+
+function validateScheduledDates(userInputValues) {
   const VALIDATION_DELAY = 1000;
 
   const now = new Date();
-  const nowWithDelay = new Date(now.getTime() - VALIDATION_DELAY);
-  const start = new Date(scheduled_start);
-  const end = new Date(scheduled_end);
+  const nowWithDelay = new Date(now - VALIDATION_DELAY);
 
-  if (start < nowWithDelay || end < nowWithDelay) {
+  const start = new Date(userInputValues.scheduled_start);
+  const end = new Date(userInputValues.scheduled_end);
+
+  if ("scheduled_start" in userInputValues && start < nowWithDelay) {
     throw new ValidationError({
-      message: "Scheduled date is in the past.",
+      message: "Scheduled start date is in the past.",
       action: "You can only schedule a study session in the future.",
+    });
+  }
+
+  if ("scheduled_end" in userInputValues && end < start) {
+    throw new ValidationError({
+      message: "Scheduled end is before scheduled start.",
+      action: "You can only schedule a study session after the schedule start.",
     });
   }
 }
@@ -81,6 +127,7 @@ function validateScheduledDates(scheduled_start, scheduled_end) {
 const studySession = {
   findOneById,
   create,
+  update,
 };
 
 export default studySession;
