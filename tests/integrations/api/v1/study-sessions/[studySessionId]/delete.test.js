@@ -20,15 +20,12 @@ describe("DELETE /api/v1/study-sessions", () => {
       });
 
       const response = await fetch(
-        "http://localhost:3000/api/v1/study-sessions",
+        `http://localhost:3000/api/v1/study-sessions/${createdStudySession.id}`,
         {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            id: createdStudySession.id,
-          }),
         },
       );
 
@@ -52,15 +49,12 @@ describe("DELETE /api/v1/study-sessions", () => {
     });
     test("Nonexistent study session", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/v1/study-sessions",
+        "http://localhost:3000/api/v1/study-sessions/4becba8e-5671-4a65-bd23-b2733e45e24d",
         {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            id: "eb662d08-7658-4712-ad18-636049285493",
-          }),
         },
       );
 

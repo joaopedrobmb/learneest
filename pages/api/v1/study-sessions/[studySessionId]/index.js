@@ -7,6 +7,7 @@ const router = createRouter();
 
 router.get(getHandler);
 router.patch(patchHandler);
+router.delete(deleteHandler);
 
 export default router.handler(controller.errorHandlers);
 
@@ -20,10 +21,22 @@ async function getHandler(request, response) {
 }
 
 async function patchHandler(request, response) {
-  const id = request.query.studySessionId;
+  const studySessionId = request.query.studySessionId;
   const userInputValues = request.body;
 
-  const updatedStudySession = await studySession.update(id, userInputValues);
+  const updatedStudySession = await studySession.update(
+    studySessionId,
+    userInputValues,
+  );
 
   return response.status(200).json(updatedStudySession);
+}
+
+async function deleteHandler(request, response) {
+  const studySessionId = request.query.studySessionId;
+
+  const deletedStudySession =
+    await studySession.insertDeleteStatus(studySessionId);
+
+  return response.status(200).json(deletedStudySession);
 }
