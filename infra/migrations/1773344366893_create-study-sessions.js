@@ -9,7 +9,12 @@ exports.up = (pgm) => {
     subject: {
       type: "varchar(30)",
       notNull: true,
-      unique: true,
+    },
+
+    status: {
+      type: "varchar(30)",
+      notNull: true,
+      default: 'pending',
     },
 
     scheduled_start: {

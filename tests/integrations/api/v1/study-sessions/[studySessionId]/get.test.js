@@ -25,6 +25,7 @@ describe("GET /api/v1/study-sessions/[study-session-id]", () => {
       expect(responseBody).toEqual({
         id: responseBody.id,
         subject: "ExistentStudySession",
+        status: "pending",
         scheduled_start: responseBody.scheduled_start,
         scheduled_end: responseBody.scheduled_end,
         created_at: responseBody.created_at,

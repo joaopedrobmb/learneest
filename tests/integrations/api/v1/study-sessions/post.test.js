@@ -37,6 +37,7 @@ describe("POST /api/v1/study-sessions", () => {
       expect(responseBody).toEqual({
         id: responseBody.id,
         subject: "validSubject",
+        status: "pending",
         scheduled_start: responseBody.scheduled_start,
         scheduled_end: responseBody.scheduled_end,
         created_at: responseBody.created_at,
