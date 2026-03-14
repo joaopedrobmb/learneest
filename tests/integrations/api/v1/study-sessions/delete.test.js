@@ -7,15 +7,29 @@ beforeAll(async () => {
   await orchestrator.runPendingMigrations();
 });
 
-describe("GET /api/v1/study-sessions/[study-session-id]", () => {
+const TWO_HOURS_IN_MILLISECONDS = 2 * 60 * 60 * 1000;
+const FOUR_HOURS_IN_MILLISECONDS = 4 * 60 * 60 * 1000;
+const now = new Date();
+const twoHoursFromNow = new Date(now.getTime() + TWO_HOURS_IN_MILLISECONDS);
+
+describe("DELETE /api/v1/study-sessions", () => {
   describe("Anonymous user", () => {
     test("Existent study session", async () => {
-      const validStudySession = await orchestrator.createStudySession({
-        subject: "ExistentStudySession",
+      const createdStudySession = await orchestrator.createStudySession({
+        subject: "existentStudySession",
       });
 
       const response = await fetch(
-        `http://localhost:3000/api/v1/study-sessions/${validStudySession.id}`,
+        "http://localhost:3000/api/v1/study-sessions",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: createdStudySession.id,
+          }),
+        },
       );
 
       expect(response.status).toBe(200);
@@ -24,8 +38,8 @@ describe("GET /api/v1/study-sessions/[study-session-id]", () => {
 
       expect(responseBody).toEqual({
         id: responseBody.id,
-        subject: "ExistentStudySession",
-        status: "pending",
+        subject: "existentStudySession",
+        status: "deleted",
         scheduled_start: responseBody.scheduled_start,
         scheduled_end: responseBody.scheduled_end,
         created_at: responseBody.created_at,
@@ -33,14 +47,21 @@ describe("GET /api/v1/study-sessions/[study-session-id]", () => {
       });
 
       expect(uuidVersion(responseBody.id)).toBe(4);
-      expect(Date.parse(responseBody.scheduled_start)).not.toBeNaN();
-      expect(Date.parse(responseBody.scheduled_end)).not.toBeNaN();
       expect(Date.parse(responseBody.created_at)).not.toBeNaN();
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
     });
-    test("nonexistent study session", async () => {
+    test("Nonexistent study session", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/v1/study-sessions/4becba8e-5671-4a65-bd23-b2733e45e24d",
+        "http://localhost:3000/api/v1/study-sessions",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: "eb662d08-7658-4712-ad18-636049285493",
+          }),
+        },
       );
 
       expect(response.status).toBe(404);

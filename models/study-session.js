@@ -100,6 +100,33 @@ async function update(id, userInputValues) {
   }
 }
 
+async function insertDeleteStatus(studySessionId) {
+  const studySessionObject = await findOneById(studySessionId);
+
+  const updatedStudySession = await runUpdateQuery(studySessionObject);
+
+  return updatedStudySession;
+
+  async function runUpdateQuery(studySessionObject) {
+    const results = await database.query({
+      text: `
+      UPDATE
+        study_sessions
+      SET
+        status = 'deleted',
+        updated_at = timezone('utc', now())
+      WHERE
+        id = $1
+      RETURNING
+        * 
+      `,
+      values: [studySessionObject.id],
+    });
+
+    return results.rows[0];
+  }
+}
+
 function validateScheduledDates(userInputValues) {
   const VALIDATION_DELAY = 1000;
 
@@ -128,6 +155,7 @@ const studySession = {
   findOneById,
   create,
   update,
+  insertDeleteStatus,
 };
 
 export default studySession;
